@@ -15,6 +15,13 @@ public class TeamPlayerFacade
 
     private EntityManager entityManager;
 
+    /**
+     * This constructor takes 3 parameters.
+     *
+     * @param teamPlayerService
+     * @param teamPlayerRepository
+     * @param entityManager
+     */
     public TeamPlayerFacade(
         TeamPlayerService teamPlayerService,
         TeamPlayerRepository teamPlayerRepository,
@@ -29,12 +36,12 @@ public class TeamPlayerFacade
     /**
      * This method takes 5 parameters and creates a player.
      *
-     * @param teamPlayerFirstname firstname of the player
-     * @param teamPlayerSurname surname of the player
-     * @param teamPlayerHeight height of the player
-     * @param teamPlayerWeight weight of the player
-     * @param teamPlayerTeam team of the player
-     * @return created player
+     * @param teamPlayerFirstname
+     * @param teamPlayerSurname
+     * @param teamPlayerHeight
+     * @param teamPlayerWeight
+     * @param teamPlayerTeam
+     * @return
      */
     public TeamPlayer createTeamPlayer(String teamPlayerFirstname, String teamPlayerSurname, int teamPlayerHeight, int teamPlayerWeight, Team teamPlayerTeam)
     {
@@ -55,7 +62,7 @@ public class TeamPlayerFacade
     /**
      * This method deletes a player.
      *
-     * @param teamPlayerId id of the player to be deleted
+     * @param teamPlayerId
      */
     public void deleteTeamPlayer(UUID teamPlayerId)
     {
@@ -73,8 +80,8 @@ public class TeamPlayerFacade
     /**
      * This method changes player's firstname.
      *
-     * @param teamPlayerId id of the player whose firstname is to be changed
-     * @param newTeamPlayerFirstname new firstname of the player
+     * @param teamPlayerId
+     * @param newTeamPlayerFirstname
      */
     public void changeTeamPlayerFirstname(UUID teamPlayerId, String newTeamPlayerFirstname)
     {
@@ -86,10 +93,10 @@ public class TeamPlayerFacade
     }
 
     /**
-     * This method changes player's surname.
+     * This method changes player's firstname.
      *
-     * @param teamPlayerId id of the player whose surname is to be changed
-     * @param newTeamPlayerSurname new surname of the player
+     * @param teamPlayerId
+     * @param newTeamPlayerSurname
      */
     public void changeTeamPlayerSurname(UUID teamPlayerId, String newTeamPlayerSurname)
     {
@@ -101,10 +108,10 @@ public class TeamPlayerFacade
     }
 
     /**
-     * This method changes player's height.
+     * This method changes player's firstname.
      *
-     * @param teamPlayerId id of the player whose height is to be changed
-     * @param newTeamPlayerHeight new height of the player
+     * @param teamPlayerId
+     * @param newTeamPlayerHeight
      */
     public void changeTeamPlayerHeight(UUID teamPlayerId, int newTeamPlayerHeight)
     {
@@ -116,16 +123,31 @@ public class TeamPlayerFacade
     }
 
     /**
-     * This method changes player's weight.
+     * This method changes player's firstname.
      *
-     * @param teamPlayerId id of the player whose weight is to be changed
-     * @param newTeamPlayerWeight new weight of the player
+     * @param teamPlayerId
+     * @param newTeamPlayerWeight
      */
     public void changeTeamPlayerWeight(UUID teamPlayerId, int newTeamPlayerWeight)
     {
         TeamPlayer teamPlayer = teamPlayerRepository.getTeamPlayerById(teamPlayerId);
 
         teamPlayerService.changeTeamPlayerWeight(teamPlayer, newTeamPlayerWeight);
+
+        entityManager.flush();
+    }
+
+    /**
+     * This method changes player's firstname.
+     *
+     * @param teamPlayerId
+     * @param newTeamPlayerTeam
+     */
+    public void changeTeamPlayerTeam(UUID teamPlayerId, Team newTeamPlayerTeam)
+    {
+        TeamPlayer teamPlayer = teamPlayerRepository.getTeamPlayerById(teamPlayerId);
+
+        teamPlayerService.changeTeamPlayerTeam(teamPlayer, newTeamPlayerTeam);
 
         entityManager.flush();
     }

@@ -159,4 +159,17 @@ public class TeamPlayer
     {
         return team;
     }
+
+    /**
+     * This method changes player's team.
+     *
+     * @param team player's team
+     */
+    public void changeTeam(Team team)
+    {
+        Assert.notNull(team, "Cannot change team to null.");
+
+        this.team = team;
+    }
+
 }
